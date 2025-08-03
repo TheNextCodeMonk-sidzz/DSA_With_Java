@@ -38,7 +38,7 @@ public class Compress_the_string {
     public static void main(String[] args) {
         String str="aaabbcdde";
 
-        System.out.println(getCompressedString(str));;
+        System.out.println(getCompressedString(str));
     }
 
 }
