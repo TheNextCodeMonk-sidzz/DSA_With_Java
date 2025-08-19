@@ -92,6 +92,38 @@ public class Creating_LinkedList {
         }
         return headNode;
     }
+// insert at kth Node
+
+    private static Node insertAtK(Node headNode, int el, int k){
+        if(headNode==null){
+            if(k==1) {
+                return new Node(el);
+            }
+            else{
+                return null;
+            }
+        }
+
+        if(k==1){
+            return new Node(el, headNode);
+        }
+        Node temp=headNode;
+        int count=0;
+        Node prev=null;
+
+        while(temp!=null){
+            count++;
+            if(count==k-1){
+                Node x=new Node(el); // when count become less than the req position , create a new node
+                x.Next=temp.Next;      // put the temp.next value inside the new node's next value
+                temp.Next=x;        // now put the new node value inside temp.Next.
+                break;
+            }
+            temp=temp.Next;
+        }
+        return headNode;
+
+    }
 
 
     //write a main function where code will be executed
@@ -102,8 +134,10 @@ public class Creating_LinkedList {
 //        PrintNode(result);
 //        Node result1=deleteTailNode(headNode);
 //        PrintNode(result1);
-        Node result2=deleteKthNode(headNode,3);
-        PrintNode(result2);
+//        Node result2=deleteKthNode(headNode,3);
+//        PrintNode(result2);
+        Node result3=insertAtK(headNode,20,2);
+        PrintNode(result3);
 
     }
 }
