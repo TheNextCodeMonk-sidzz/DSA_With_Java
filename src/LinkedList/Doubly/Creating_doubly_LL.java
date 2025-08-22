@@ -4,37 +4,39 @@ package LinkedList.Doubly;
 
 public class Creating_doubly_LL {
 
-    static class Node{
+    public static class Node{
 
         int data;
-        Node prev;
+        Node back;
         Node next;
 
-        Node(int data , Node prev, Node next){
+        Node(int data ,  Node next,Node back){
             this.data=data;
-            this.prev=prev;
+            this.back=back;
             this.next=next;
         }
 
         Node(int data){
             this.data=data;
+            next=null;
+            back=null;
         }
 
     }
 
 
-    private static Node convertArrToLL(int[] arr){
+    public static Node convertArrToLL(int[] arr){
         Node head=new Node(arr[0]);
-        Node mover=head;
+        Node prev=head;
         for(int i=1;i<arr.length;i++){
-            Node newNode=new Node(arr[i]);
-            mover.next=newNode;
-            mover=mover.next; //now it will move to next noce
+            Node temp=new Node(arr[i], null, prev);
+            prev.next=temp; // point to temp
+            prev=temp; // move to temp
         }
         return head;
     }
 
-    private static Node printNode(Node head){
+    public static Node printNode(Node head){
         Node temp=head;
         while(temp!=null){
             System.out.print(temp.data +"->");
@@ -44,12 +46,12 @@ public class Creating_doubly_LL {
         return head;
     }
 
-    static Node insertAtHeadDLL(Node head,int k){
+    private static Node insertAtHeadDLL(Node head,int k){
         Node node=new Node(k);
         node.next=head;
-        node.prev=null;
+        node.back=null;
         if(head!=null) {
-            head.prev = node;
+            head.back = node;
         }
         head=node;
         return head;

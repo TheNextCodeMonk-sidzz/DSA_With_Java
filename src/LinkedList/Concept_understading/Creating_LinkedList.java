@@ -31,7 +31,7 @@ public class Creating_LinkedList {
         Node headNode=new Node(arr[0]);
         Node mover=headNode;
         for(int i=1;i<arr.length;i++){
-            Node newNode=new Node(arr[i]);
+            Node newNode=new Node(arr[i],null);
             mover.Next=newNode;
             mover=mover.Next; //now it will move to next noce
         }
@@ -87,7 +87,6 @@ public class Creating_LinkedList {
                 break;
             }
             prev=temp;
-
             temp=temp.Next;
         }
         return headNode;
